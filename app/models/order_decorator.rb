@@ -78,7 +78,7 @@ Order.class_eval do
   # ensure that user has sufficient credits to cover adjustments
   #
   def ensure_sufficient_credit
-    if user.store_credits_total < store_credit_amount
+    if user && user.store_credits_total < store_credit_amount
       #user's credit does not cover all adjustments.
       store_credits.destroy_all
 
