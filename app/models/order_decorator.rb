@@ -56,6 +56,7 @@ Order.class_eval do
   fsm.after_transition :to => 'complete', :do => :consume_users_credit
 
   def consume_users_credit
+    return unless user
     return unless completed?
     credit_used = self.store_credit_amount
 
